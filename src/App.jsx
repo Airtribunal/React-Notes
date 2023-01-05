@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -61,6 +61,19 @@ const App = () => {
   function handleToggleDarkMode() {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   }
+
+  // Local Storaging Notes
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem("air-notes"));
+
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("air-notes", JSON.stringify(notes));
+  }, [notes]);
 
   return (
     <div className={darkMode ? "dark-bg bg" : "light-bg bg"}>
