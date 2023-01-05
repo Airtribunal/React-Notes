@@ -54,21 +54,34 @@ const App = () => {
   }
 
   // Searching Notes
-  const [searchText, setSearchText] = useState('');
-  console.log(searchText);
+  const [searchText, setSearchText] = useState("");
+
+  // Dark Mode
+  const [darkMode, setDarkMode] = useState(true);
+  function handleToggleDarkMode() {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  }
+
   return (
-    <div className="notes-container">
-      <Header />
-      <Search handleSearchNote={setSearchText} />
-      <NotesList
-        noteText={noteText}
-        handleAddNote={handleAddNote}
-        handleChange={handleChange}
-        notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))}
-        characterLimit={characterLimit}
-        handleDeleteNote={handleDeleteNote}
-      />
-      <ToastContainer />
+    <div className={darkMode ? "dark-bg bg" : "light-bg bg"}>
+      <div className="notes-container">
+        <Header
+          handleToggleDarkMode={handleToggleDarkMode}
+          darkMode={darkMode}
+        />
+        <Search handleSearchNote={setSearchText} />
+        <NotesList
+          noteText={noteText}
+          handleAddNote={handleAddNote}
+          handleChange={handleChange}
+          notes={notes.filter((note) =>
+            note.text.toLowerCase().includes(searchText)
+          )}
+          characterLimit={characterLimit}
+          handleDeleteNote={handleDeleteNote}
+        />
+        <ToastContainer />
+      </div>
     </div>
   );
 };
