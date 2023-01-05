@@ -57,7 +57,7 @@ const App = () => {
   const [searchText, setSearchText] = useState("");
 
   // Dark Mode
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   function handleToggleDarkMode() {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   }
