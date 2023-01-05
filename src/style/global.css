@@ -18,6 +18,7 @@
 :root {
     --sizeIndex: 1vw + 1vh;
     --mainColor: hsl(56, 98%, 77%);
+    --secondColor: hsl(174, 58%, 62%);
 }
 
 ::placeholder {
@@ -32,7 +33,6 @@ body {
 /* Notes */
 .notes-container {
     max-width: 1250px;
-    min-height: 100vh;
 
     margin-inline: auto;
     padding: 1em;
@@ -44,7 +44,7 @@ body {
 
     display: grid;
     gap: 1.5em;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .note {
@@ -52,11 +52,15 @@ body {
     border-radius: 10px;
     padding: 1rem;
     height: 100%;
-    min-height: 250px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     white-space: pre-wrap;
+}
+
+.note-text {
+    line-break: anywhere;
 }
 
 .note-footer {
@@ -69,15 +73,21 @@ body {
     cursor: pointer;
 }
 
+.delete-icon:hover {
+    color: hsl(174, 58%, 50%);
+}
+
 .new.note {
-    background-color: #67d7cc;
+    background-color: var(--secondColor);
 }
 
 textarea {
-    font-size: calc(var(--sizeIndex) * 1);
     border: none;
     resize: none;
-    background-color: #67d7cc;
+
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondColor);
 }
 
 textarea:focus {

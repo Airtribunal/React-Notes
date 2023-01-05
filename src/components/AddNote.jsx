@@ -1,6 +1,5 @@
-
 const AddNote = (props) => {
-  const { noteText, handleChange, handleAddNote } = props;
+  const { noteText, handleChange, handleAddNote, characterLimit } = props;
 
   return (
     <div className="new note">
@@ -12,7 +11,7 @@ const AddNote = (props) => {
         onChange={handleChange}
       ></textarea>
       <div className="note-footer">
-        <small>200 remaining</small>
+        <small>{`${characterLimit - noteText.length} remaining`}</small>
         <button onClick={() => handleAddNote(noteText)} className="save-button">
           Save
         </button>
